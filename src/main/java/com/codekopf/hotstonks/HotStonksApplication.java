@@ -46,6 +46,7 @@ public class HotStonksApplication {
         ownedStocks.add("AAL");    // American Airlines Group Inc.
         ownedStocks.add("T");      // AT&T Inc.
         ownedStocks.add("BP");     // BP p.l.c.
+        ownedStocks.add("BA");      // Boeing
         // iOwn.add("");    CEZ as
         // iOwn.add("");    Deutsche Lufthansa AG
         // iOwn.add("");    Erste Group Bank AG - https://www.google.com/finance/quote/EBS:VIE?sa=X&window=5Y ; https://www.boersen-zeitung.de/unternehmen/kurse/AT0000652011
@@ -94,18 +95,17 @@ public class HotStonksApplication {
         speculativeStocks.add("TSN");     // Tyson Foods, Inc.
         speculativeStocks.add("X");       // United States Steel
         speculativeStocks.add("KR");      // Kroger Co.
-        speculativeStocks.add("APPL");    // Apple Inc         // TODO multiple results
+        speculativeStocks.add("AAPL");    // Apple Inc.
         speculativeStocks.add("NFLX");    // Netflix Inc.
-        speculativeStocks.add("NESN");    // Nestlé S.A.
+        speculativeStocks.add("NESN");    // Nestlé S.A. // TODO. No results
         speculativeStocks.add("TWLO");    // Twilio Inc.
-        speculativeStocks.add("SGRE");    // Siemens Gamesa Renewable Energy SA
+        speculativeStocks.add("SGRE");    // Siemens Gamesa Renewable Energy SA // TODO no results
         speculativeStocks.add("DOCN");    // DigitalOcean Holdings Inc
         speculativeStocks.add("CRM");     // Salesforce
         speculativeStocks.add("GOLD");    // Barrick Gold Corp
-        speculativeStocks.add("NYSE");    // Sony Corporation NYSE: SNE
+        speculativeStocks.add("NYSE");    // Sony Corporation NYSE: SNE // TODO. multiple results
         speculativeStocks.add("B4B");     // Metro AG
         speculativeStocks.add("LKNCY");   // luckin coffee
-        speculativeStocks.add("BA");      // Boeing
 
         // STARBACKS pridat do toho co pozeram
 
