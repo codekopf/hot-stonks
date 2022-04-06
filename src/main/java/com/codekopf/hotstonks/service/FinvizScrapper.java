@@ -22,20 +22,19 @@ import com.codekopf.hotstonks.HotStonksApplication;
 
 public class FinvizScrapper implements MenuScraper {
 
-    private final String urlSuffix;
     private final String name;
     private final String date;
+    private final String urlSuffix;
 
     /**
-     *
-     * @param name
-     * @param urlSuffix
+     * @param scrappedImageName - base of name for all images scrapped by scrapper for specific stock ticker
      * @param date - date in yyyy-mm-dd string format for which the scrapping is happening
+     * @param urlSuffix - stock ticker symbol
      */
-    public FinvizScrapper(String name, String urlSuffix, String date) {
-        this.urlSuffix = urlSuffix;
-        this.name = name;
+    public FinvizScrapper(final String scrappedImageName, final String date, final String urlSuffix) {
+        this.name = scrappedImageName;
         this.date = date;
+        this.urlSuffix = urlSuffix;
     }
 
     @Override

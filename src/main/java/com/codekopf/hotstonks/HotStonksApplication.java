@@ -16,8 +16,11 @@ import java.util.List;
 import java.util.Objects;
 
 import com.codekopf.hotstonks.file.Template;
+import com.codekopf.hotstonks.model.StockTitle;
 import com.codekopf.hotstonks.service.FinvizScrapper;
 import com.codekopf.hotstonks.service.MenuScraper;
+
+import static com.codekopf.hotstonks.model.CrawlingSource.FINVIZ;
 
 public class HotStonksApplication {
 
@@ -34,85 +37,84 @@ public class HotStonksApplication {
 //        System.out.println();
         System.setProperty("webdriver.gecko.driver", "C:\\bin\\geckodriver\\geckodriver.exe");
 
-        // backupPrevious();
+        List<StockTitle> ownedStocks = new ArrayList<>();
+        //
+        // Stocks from Degiro
+        //
+        ownedStocks.add(StockTitle.of(FINVIZ, "AMD", "Advanced Micro Devices, Inc."));
+        // Airbus
+        ownedStocks.add(StockTitle.of(FINVIZ, "ALK", "Alaska Air Group, Inc."));
+        ownedStocks.add(StockTitle.of(FINVIZ, "AAL", "American Airlines Group Inc."));
+        ownedStocks.add(StockTitle.of(FINVIZ, "AAPL", "Apple Inc."));
+        ownedStocks.add(StockTitle.of(FINVIZ, "T", "AT&T Inc."));
+        ownedStocks.add(StockTitle.of(FINVIZ, "BP", "BP p.l.c."));
+        ownedStocks.add(StockTitle.of(FINVIZ, "BA", "Boeing"));
+        // CEZ a.s.
+        // Deutsche Lufthansa AG
+        // Erste Group Bank AG - https://www.google.com/finance/quote/EBS:VIE?sa=X&window=5Y ; https://www.boersen-zeitung.de/unternehmen/kurse/AT0000652011
+        ownedStocks.add(StockTitle.of(FINVIZ, "F", "Ford Motor"));
+        ownedStocks.add(StockTitle.of(FINVIZ, "FNKO", "Funko Inc"));
+        ownedStocks.add(StockTitle.of(FINVIZ, "GM", "General Motors Co"));
+        ownedStocks.add(StockTitle.of(FINVIZ, "ING", "ING Groep NV"));
+        // Kofola CeskoSlovensko as
+        ownedStocks.add(StockTitle.of(FINVIZ, "KHC", "Kraft Heinz Co"));
+        ownedStocks.add(StockTitle.of(FINVIZ, "M", "Macy's Inc"));
+        // Moneta Money Bank as
+        ownedStocks.add(StockTitle.of(FINVIZ, "NCLH", "Norwegian Cruise Line Holdings Ltd"));
+        ownedStocks.add(StockTitle.of(FINVIZ, "PLUG", "Plug Power Inc"));
+        ownedStocks.add(StockTitle.of(FINVIZ, "SHEL", "Shell plc"));
+        // RWE AG
+        // Schibsted ASA
+        ownedStocks.add(StockTitle.of(FINVIZ, "SIX", "Six Flags Entertainment Corp"));
+        ownedStocks.add(StockTitle.of(FINVIZ, "LUV", "Southwest Airlines"));
+        // Stock Spirits Group PLC
+        // Thyssenkrupp AG
+        ownedStocks.add(StockTitle.of(FINVIZ, "UL", "Unilever PLC"));
+        // Volkswagen AG
+        ownedStocks.add(StockTitle.of(FINVIZ, "WFC", "Wells Fargo"));
+        ownedStocks.add(StockTitle.of(FINVIZ, "X", "United States Steel"));
+        //
+        // Stocks from Revolut
+        //
+        ownedStocks.add(StockTitle.of(FINVIZ, "CSCO", "Cisco"));
+        ownedStocks.add(StockTitle.of(FINVIZ, "KO", "The Coca-Cola Company"));
+        ownedStocks.add(StockTitle.of(FINVIZ, "MSFT", "Microsoft Corporation"));
+        ownedStocks.add(StockTitle.of(FINVIZ, "AMZN", "Amazon.com, Inc."));
+        ownedStocks.add(StockTitle.of(FINVIZ, "GOOGL", "Alphabet Inc."));
+        ownedStocks.add(StockTitle.of(FINVIZ, "MCD", "McDonald's Corporation"));
+        //
+        // Stocks from Trading212
+        //
+        ownedStocks.add(StockTitle.of(FINVIZ, "CNI", "Canadian National Railway"));
+        ownedStocks.add(StockTitle.of(FINVIZ, "CP", "Canadian Pacific Railway Limited"));
+        ownedStocks.add(StockTitle.of(FINVIZ, "CSX", "CSX Corporation"));
+        ownedStocks.add(StockTitle.of(FINVIZ, "NSC", "Norfolk Southern Corporation"));
+        // Orsted
+        ownedStocks.add(StockTitle.of(FINVIZ, "UNP", "Union Pacific Corporation"));
 
-        // Industry - do
 
-        List<String> ownedStocks = new ArrayList<>();
-        // Degiro
-        ownedStocks.add("AMD");    // Advanced Micro Devices, Inc.
-        // iOwn.add("");    Airbus
-        ownedStocks.add("ALK");    // Alaska Air Group, Inc.
-        ownedStocks.add("AAL");    // American Airlines Group Inc.
-        ownedStocks.add("T");      // AT&T Inc.
-        ownedStocks.add("BP");     // BP p.l.c.
-        ownedStocks.add("BA");      // Boeing
-        // iOwn.add("");    CEZ as
-        // iOwn.add("");    Deutsche Lufthansa AG
-        // iOwn.add("");    Erste Group Bank AG - https://www.google.com/finance/quote/EBS:VIE?sa=X&window=5Y ; https://www.boersen-zeitung.de/unternehmen/kurse/AT0000652011
-        ownedStocks.add("F");      // Ford Motor
-        ownedStocks.add("FNKO");   // Funko Inc
-        ownedStocks.add("GM");     // General Motors Co
-        ownedStocks.add("ING");    // ING Groep NV
-        // iOwn.add("");    Kofola CeskoSlovensko as
-        ownedStocks.add("KHC");    // Kraft Heinz Co
-        ownedStocks.add("M");      // Macy's Inc
-        // iOwn.add("");    Moneta Money Bank as
-        ownedStocks.add("NCLH");   // Norwegian Cruise Line Holdings Ltd
-        ownedStocks.add("PLUG");   // Plug Power Inc
-        ownedStocks.add("RDS-A");  // Royal Dutch Shell plc - EAM a PLC ?????
-        // iOwn.add("");    RWE AG
-        // iOwn.add("");    // Schibsted ASA
-        ownedStocks.add("SIX");    // Six Flags Entertainment Corp
-        ownedStocks.add("LUV");    // Southwest Airlines
-        // iOwn.add("");    Stock Spirits Group PLC
-        // iOwn.add("");    thyssenkrupp AG
-        ownedStocks.add("UL");     // Unilever PLC
-        // iOwn.add("");    Volkswagen AG
-        ownedStocks.add("WFC");    // Wells Fargo
-        // Revolut
-        ownedStocks.add("CSCO");   // Cisco
-        ownedStocks.add("KO");     // The Coca-Cola Company
-        ownedStocks.add("MSFT");   // Microsoft Corporation
-        ownedStocks.add("AMZN");   // Amazon.com, Inc.
-        ownedStocks.add("GOOGL");  // Alphabet Inc.
-        ownedStocks.add("MCD");    // McDonald's Corporation
-        // Trading212
-        ownedStocks.add("CNI");    // Canadian National Railway
-        ownedStocks.add("CP");     // Canadian Pacific Railway Limited
-        ownedStocks.add("CSX");    // CSX Corporation
-        ownedStocks.add("KNL");    // Knoll, Inc.                   // TODO No results found for KNL
-        ownedStocks.add("NSC");    // Norfolk Southern Corporation
-        // iOwn.add("");        Orsted
-        ownedStocks.add("UNP");    // Union Pacific Corporation
-
-
-
-        List<String> speculativeStocks = new ArrayList<>();
-        speculativeStocks.add("ARKK");    // ARK Innovation ETF
-        speculativeStocks.add("TSLA");    // Tesla
-        speculativeStocks.add("ABNB");    // AirBnB
-        speculativeStocks.add("TSN");     // Tyson Foods, Inc.
-        speculativeStocks.add("X");       // United States Steel
-        speculativeStocks.add("KR");      // Kroger Co.
-        speculativeStocks.add("AAPL");    // Apple Inc.
-        speculativeStocks.add("NFLX");    // Netflix Inc.
-        speculativeStocks.add("NESN");    // Nestlé S.A. // TODO. No results
-        speculativeStocks.add("TWLO");    // Twilio Inc.
-        speculativeStocks.add("SGRE");    // Siemens Gamesa Renewable Energy SA // TODO no results
-        speculativeStocks.add("DOCN");    // DigitalOcean Holdings Inc
-        speculativeStocks.add("CRM");     // Salesforce
-        speculativeStocks.add("GOLD");    // Barrick Gold Corp
-        speculativeStocks.add("NYSE");    // Sony Corporation NYSE: SNE // TODO. multiple results
-        speculativeStocks.add("B4B");     // Metro AG
-        speculativeStocks.add("LKNCY");   // luckin coffee
-
-        // STARBACKS pridat do toho co pozeram
+        List<StockTitle> speculativeStocks = new ArrayList<>();
+        speculativeStocks.add(StockTitle.of(FINVIZ, "ARKK", "ARK Innovation ETF"));
+        speculativeStocks.add(StockTitle.of(FINVIZ, "ABNB", "AirBnB"));
+        speculativeStocks.add(StockTitle.of(FINVIZ, "B4B", "Metro AG"));
+        speculativeStocks.add(StockTitle.of(FINVIZ, "GOLD", "Barrick Gold Corp"));
+        speculativeStocks.add(StockTitle.of(FINVIZ, "CRM", "Salesforce"));
+        speculativeStocks.add(StockTitle.of(FINVIZ, "KR", "Kroger Co."));
+        speculativeStocks.add(StockTitle.of(FINVIZ, "NFLX", "Netflix Inc."));
+        // Nestlé S.A. - Swiss company, not at FINVIZ
+        speculativeStocks.add(StockTitle.of(FINVIZ, "TWLO", "Twilio Inc."));
+        // Siemens Gamesa Renewable Energy SA - not at FINVIZ
+        speculativeStocks.add(StockTitle.of(FINVIZ, "DOCN", "DigitalOcean Holdings Inc"));
+        speculativeStocks.add(StockTitle.of(FINVIZ, "SONY", "Sony Group Corporation"));
+        speculativeStocks.add(StockTitle.of(FINVIZ, "LKNCY", "Luckin coffee"));
+        speculativeStocks.add(StockTitle.of(FINVIZ, "SBUX", "Starbucks Corporation"));
+        speculativeStocks.add(StockTitle.of(FINVIZ, "TSN", "Tyson Foods, Inc."));
+        speculativeStocks.add(StockTitle.of(FINVIZ, "TSLA", "Tesla"));
 
         List<MenuScraper> menuScrapers = new ArrayList<>();
 
-        ownedStocks.forEach(ownedStock -> menuScrapers.add(new FinvizScrapper(ownedStock, ownedStock, date)));
-        speculativeStocks.forEach(speculativeStock -> menuScrapers.add(new FinvizScrapper(speculativeStock, speculativeStock, date)));
+        ownedStocks.forEach(ownedStock -> menuScrapers.add(new FinvizScrapper(ownedStock.getTicker(), date, ownedStock.getTicker())));
+        speculativeStocks.forEach(speculativeStock -> menuScrapers.add(new FinvizScrapper(speculativeStock.getTicker(), date, speculativeStock.getTicker())));
 
 //        menuScrapers.add(new MenickaMenuScraper("beefhouse-bistro", "5932-beefhouse-bistro--coffee.html"));
 //        menuScrapers.add(new MenickaMenuScraper("beefhouse-grill-bar", "5931-beefhouse-grill--bar.html"));
