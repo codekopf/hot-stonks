@@ -16,7 +16,7 @@
     <description>Project aimed to get an idea what is the best stock to buy in this moment</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
         <selenium.version>3.7.1</selenium.version>
         <mail.version>1.4.7</mail.version>
     </properties>
